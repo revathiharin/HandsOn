@@ -1,3 +1,6 @@
 {
-    "debug.terminal.clearBeforeReusing": true
+    "debug.terminal.clearBeforeReusing": true,
+    "files.associations": {
+        "random": "cpp"
+    }
 }
