@@ -3,14 +3,14 @@ public class Collection implements Comparable<Collection>{
     String photoName;
     String cityName;   
     String timestamp;
-    String extension;
+    //String extension;
       
 
-    public Collection(String photoName, String cityName, String timestamp, String extension) {
+    public Collection(String photoName, String cityName, String timestamp) {
         this.photoName = photoName;
         this.cityName = cityName;
         this.timestamp = timestamp;
-        this.extension = extension;
+        //this.extension = extension;
        
     }
     
@@ -39,18 +39,18 @@ public class Collection implements Comparable<Collection>{
     }
     
     
-    public String getExtension() {
+   /* public String getExtension() {
         return extension;
     }
 
     public void setExtension(String ext) {
         this.extension = ext;
     }
-    
+    */
 
     @Override
-    public int comparePhotoWithTimestamp(collection entry) {        
-        return this.getTimestamp().comparePhotoWithTimestamp(entry.getTimestamp());
+    public int compareTo(Collection entry) {        
+        return this.getTimestamp().compareTo(entry.getTimestamp());
     }
                 
 }

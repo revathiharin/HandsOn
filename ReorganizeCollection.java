@@ -31,19 +31,20 @@ public class ReorganizeCollection {
 
         List<Collection> collections = new ArrayList<Collection>();
         Map<String, ArrayList<Collection>> mappedList = new HashMap();
-        List<String> collections = new ArrayList<>();
+        List<String> photoCollections = new ArrayList<>();
          String reOrderedCollections = "";
 
         StringTokenizer token = new StringTokenizer(s, "\n");
 
         while (token.hasMoreTokens()) {
-            collections.add(token.nextToken());
+            photoCollections.add(token.nextToken());
         }
 
-        for (String collection : collections) {
+        for (String collection : photoCollections) {
             StringTokenizer delimiter = new StringTokenizer(collection, ",");
             //Eliminate blank spaces
-            Collection coll  = new Collection(delimiter.nextToken().replace(" ", ""), delimiter.nextToken().replace(" ", ""), delimiter.nextToken().replace(" ", ""));
+            Collection coll = new Collection(delimiter.nextToken().replace(" ", ""), delimiter.nextToken().replace(" ", ""), delimiter.nextToken().replace(" ", ""));
+            //Collection coll  = new Collection(delimiter.nextToken().replace(" ", ""), delimiter.nextToken().replace(" ", ""), delimiter.nextToken().replace(" ", ""));
             collections.add(coll);
         }
 
@@ -56,7 +57,7 @@ public class ReorganizeCollection {
             } else {
                 ArrayList<Collection> picturesList = new ArrayList<>();
                 picturesList.add(coll);
-                mappedList.put(city, PicturedList);
+                mappedList.put(city, picturesList);
             }
             //#######################################
         }
@@ -64,14 +65,14 @@ public class ReorganizeCollection {
        
 
         for (Collection c : collections) {
-            ArrayList<collection> sortedList = mappedList.get(p.getCityName());
+            ArrayList<Collection> sortedList = mappedList.get(c.getCityName());
             Collections.sort(sortedList);
             int counter = sortedList.indexOf(c) + 1;
 
             reOrderedCollections = reOrderedCollections
                     + c.getCityName() + ((returnZeros(String.valueOf(mappedList.get(c.getCityName()).size()).length()))
                     + counter).substring(String.valueOf(counter).length())
-                    + c.getPhotoName().substring(p.getPhotoName().indexOf(".")) + "\n";
+                    + c.getPhotoName().substring(c.getPhotoName().indexOf(".")) + "\n";
         }
 
         return reOrderedCollections;
